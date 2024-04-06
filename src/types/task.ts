@@ -9,7 +9,6 @@ export interface Task {
 export interface TaskPayload {
     title: string;
     content: string;
-    done: boolean;
     userId: string;
 }
 

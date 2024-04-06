@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { TaskPayload } from "../types/task";
+import { TaskPayload, TaskUpdatePayload } from "../types/task";
 
 export class TaskService {
   private prisma: PrismaClient;
@@ -44,7 +44,7 @@ export class TaskService {
     }
   }
 
-    async updateTask(id: string, payload: TaskPayload) {
+    async updateTask(id: string, payload: TaskUpdatePayload) {
         try {
         const updatedTask = this.prisma.task.update({
             where: {
