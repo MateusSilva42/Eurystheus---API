@@ -1,12 +1,9 @@
-import { UserService } from "../services";
+import userService from "../services";
 import { Request, Response } from "express";
 
-export class UserController {
-  private userService: UserService;
+const user = userService.userService;
 
-  constructor() {
-    this.userService = new UserService();
-  }
+class UserController {
 
   async createUser(req: Request, res: Response) {
     try {
@@ -18,7 +15,8 @@ export class UserController {
             username: req.body.username,
         };
 
-      const newUser = await this.userService.createUser(payload);
+      const newUser = await user.createUser(payload);
+      if (!newUser) throw new Error("Erro ao criar um novo usuário");
       res.status(201).send(newUser);
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -29,3 +27,5 @@ export class UserController {
     }
   }
 }
+
+export default new UserController();

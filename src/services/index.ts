@@ -1,4 +1,4 @@
-import {TaskService} from './task';
-import {UserService} from './user';
+import taskService from './task';
+import userService from './user';
 
-export {TaskService, UserService};
+export default {taskService, userService};

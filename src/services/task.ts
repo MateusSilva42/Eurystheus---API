@@ -1,15 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import { TaskPayload, TaskUpdatePayload } from "../types/task";
 
-export class TaskService {
-  private prisma: PrismaClient;
-
-  constructor() {
-    this.prisma = new PrismaClient();
-  }
+class TaskService {
+  private prisma = new PrismaClient();
 
   async createTask(payload: TaskPayload) {
     try {
+
       const newTask = this.prisma.task.create({
         data: payload,
       });
@@ -46,6 +43,8 @@ export class TaskService {
 
     async updateTask(id: string, payload: TaskUpdatePayload) {
         try {
+          console.log("payload", payload);
+          
         const updatedTask = this.prisma.task.update({
             where: {
             id,
@@ -83,3 +82,5 @@ export class TaskService {
         }
     }
 }
+
+export default new TaskService();
