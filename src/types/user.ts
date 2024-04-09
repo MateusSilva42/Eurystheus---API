@@ -13,4 +13,9 @@ export interface User {
     password?: string;
     username: string;
   }
+
+  export interface LoginPayload {
+    username: string;
+    password: string;
+  }
   
