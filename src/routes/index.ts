@@ -6,7 +6,7 @@ import { isUser } from "../middlewares/authenticate";
 
 const router = Router();
 
-router.use("/user", isUser, userRouter());
+router.use("/user", userRouter());
 router.use("/task", isUser, taskRouter());
 router.use("/auth", authRouter());
 

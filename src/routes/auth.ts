@@ -7,7 +7,11 @@ export function authRouter(): Router {
   const authController = AuthController;
 
   router.get("/csrf-token", csrfAuth, (req, res) => {
-    res.status(200).send({ csrfToken: req.csrfToken() });
+    const csrfToken = req.csrfToken();
+    res.cookie('csrf', csrfToken);
+    console.log('TOKEN GERADO', csrfToken);
+    
+    res.status(200).send({ csrfToken });
   });
 
   router.post("/", authController.login);
