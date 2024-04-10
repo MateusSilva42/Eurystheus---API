@@ -6,6 +6,7 @@ const auth = authServices.authService;
 class AuthController {
   async login(req: Request, res: Response) {
     try {
+      
       if (!req.body) throw new Error('Erro ao fazer login');
 
       const payload = {
@@ -16,9 +17,9 @@ class AuthController {
       const token = await auth.login(payload);
       if (!token) throw new Error('Erro ao fazer login');
 
-      const csrfToken = req.csrfToken();
+      // const csrfToken = req.csrfToken();
 
-      res.status(200).send({ auth: token, csrfToken: csrfToken });
+      res.status(200).send({ auth: token });
     } catch (error: unknown) {
       if (error instanceof Error) {
         res.status(500).send(error.message);

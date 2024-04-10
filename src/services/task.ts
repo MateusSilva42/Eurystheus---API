@@ -43,8 +43,6 @@ class TaskService {
 
     async updateTask(id: string, payload: TaskUpdatePayload) {
         try {
-          console.log("payload", payload);
-          
         const updatedTask = this.prisma.task.update({
             where: {
             id,
