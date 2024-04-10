@@ -12,7 +12,6 @@ export const csrfAuth = csrf({
         if (Array.isArray(token)) {
             return token[0];
         } else if (typeof token === 'string') {
-            console.log('>>>>>token RECEBIDO', token);
             return token;
         } else {
             return '';
